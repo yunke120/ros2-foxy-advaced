@@ -116,24 +116,30 @@ Gazebo文件
    ```
 
 ### 开始
-1. 修改
+1. 修改模型配置文件
    ```shell
    $ cd /opt/ros/foxy/share/turtlebot3_navigation2/param
    $ sudo gedit waffle.yaml
+   ```
+   ![](figures/waffleyaml.png)
+2. 重启
+   ```shell
    $ reboot
    ```
-2. 重启之后打开gazebo仿真环境
+3. 重启之后打开gazebo仿真环境
    ```shell
    $ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
    ```
-3. 打开导航系统,指定地图文件, map/my_map.yaml为地图配置文件
+4. 打开导航系统,指定地图文件, map/my_map.yaml为地图配置文件
    ```shell
-   ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=map/my_map.yaml 
+   $ ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=map/my_map.yaml 
    ```
-4. 启动之后，会出现Global Status:Error，这个时候需要对机器人进行重定位，打开Gazebo，观察机器人在地图中的位置和方向，在rviz界面点击2D Pose Estimate，在地图中点击鼠标左键确定机器人位置，长按左键进行拖动确定机器人方向
-5. 开始导航，点击Navigation2 Goal，再在地图中通过鼠标左键点击一个位置并拖动确定方向，会自动生成导航路线，机器人开始运动,在gazebo中同步进行。
+5. 重定位
+   启动之后，会出现Global Status:Error，这个时候需要对机器人进行重定位，打开Gazebo，观察机器人在地图中的位置和方向，在rviz界面点击2D Pose Estimate，在地图中点击鼠标左键确定机器人位置，长按左键进行拖动确定机器人方向
+6. 开始导航
+   点击Navigation2 Goal，再在地图中通过鼠标左键点击一个位置并拖动确定方向，会自动生成导航路线，机器人开始运动,在gazebo中同步进行。
    ![](figures/navigation2_goal.png)
-6. 多点导航
+7. 多点导航
    点击 Waypoint mode, 点击 Navigation2 Goal, 通过鼠标左键在地图中选第一个点，再次点击 Navigation2 Goal选择第二个点，以此类推
    ![](figures/waypointmode.png)
    最后点击Start Navigation，机器人就会沿着目标点进行运动
